@@ -6,67 +6,107 @@
   <title>Tailwind Demo</title>
   <link href="/style.css" rel="stylesheet">
 </head>
-<body class="bg-cover bg-center bg-no-repeat min-h-screen text-white"
-      style="background-image: url('background.jpg');">  
+<body class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">  
   
-  <header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full text-sm py-3 bg-amber-100">
-  <nav class="max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between text-2xl">
-    <a class="flex-none font-bold text-size-5px text-[#323232] focus:outline-hidden focus:opacity-70" href="#" aria-label="Brand">Mailflow</a>
-    <div class="flex flex-row items-center gap-5 mt-5 sm:justify-end sm:mt-0 sm:ps-5">
-      <a class="font-medium text-[#ea556e] hover:text-[#444444] "href="#">Landing</a>
-      <a class="font-medium text-[#ea556e] hover:text-[#444444] "href="#">Account</a>
-      <a class="font-medium text-[#ea556e] hover:text-[#444444] "href="#">Work</a>
-      <a class="font-medium text-[#ea556e] hover:text-[#444444] "href="#">Blog</a>
-    </div>
-  
-   <div class="flex items-center gap-4 text-sm text-black">
-      <a href="signup.html" class="text-black bg-white hover:bg-[#ea556e] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign In</a>
-      <a href="signup.html" class="text-black bg-white hover:bg-[#ea556e] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</a>
-    </div>
-    </nav>
-</header>
-<section class="max-w-6xl mx-auto mt-16 px-6 grid md:grid-cols-2 gap-10 items-center">
-
-    <!-- TEXT CONTENT -->
-    <div class="text-center md:text-left">
-      <h2 class="text-4xl md:text-5xl font-bold leading-tight">
-        Make Mailing Easy
-      </h2>
-
-      <p class="mt-4 text-lg opacity-90">
-        Get all your mail and messages in one flow. Boost your productivity with Mailflow, convenient all-in-one inbox for all your communication channels.
-      </p>
-      <p></p>
-      <br>
-      <a href="signup.html" class=" hover:opacity-80  bg-[#f52536] hover:bg-[#ff5d69] text-white font-semibold py-3 px-6 rounded-lg">Sign Up for free</a>
+  <header class="w-full text-sm py-4 bg-white shadow-sm border-b border-gray-200">
+    <nav class="max-w-7xl w-full mx-auto px-4 flex items-center justify-between">
+      <a class="font-bold text-black text-xl md:text-2xl tracking-tight" href="index.html" aria-label="Brand">Mailflow</a>
+      
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="md:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
       </button>
-    </div>
 
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8 text-base">
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="index.html">Landing</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Account</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Work</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Blog</a>
+        <div class="flex items-center gap-3 ml-2">
+          <a href="signin.html" class="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 hover:border-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 transition-all">Sign In</a>
+          <a href="signup.html" class="text-white bg-black hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 transition-all">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 border-t border-gray-200 mt-2 pt-4">
+      <div class="flex flex-col gap-4">
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="index.html">Landing</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Account</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Work</a>
+        <a class="font-medium text-gray-700 hover:text-black transition-colors" href="#">Blog</a>
+        <div class="flex flex-col gap-3 pt-2">
+          <a href="signin.html" class="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-all">Sign In</a>
+          <a href="signup.html" class="text-white bg-black hover:bg-gray-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-all">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+<section class="relative max-w-6xl mx-auto mt-8 md:mt-12 px-6 py-8 md:py-12 flex items-center justify-center min-h-[calc(100vh-120px)]">
+  
+  <!-- Gradient Background Shapes -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-10 right-0 w-80 h-80 bg-gradient-to-br from-gray-200 to-transparent rounded-full blur-3xl opacity-30"></div>
+    <div class="absolute bottom-10 left-0 w-80 h-80 bg-gradient-to-tr from-gray-300 to-transparent rounded-full blur-3xl opacity-20"></div>
+  </div>
+
+  <div class="relative w-full mx-auto">
+    <!-- TEXT CONTENT -->
+    <div class="text-center space-y-6 md:space-y-8">
+      
+      <!-- Heading with Gradient Effect -->
+      <div class="space-y-1">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          <span class="block bg-gradient-to-r from-black via-gray-800 to-gray-600 bg-clip-text text-transparent">
+            Make Mailing
+          </span>
+          <span class="block mt-1 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-400 bg-clip-text text-transparent">
+            Easy
+          </span>
+        </h1>
+      </div>
+
+      <!-- Description with Gradient Border -->
+      <div class="relative inline-block px-6 py-4 md:px-10 md:py-6 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-xl border border-gray-200 shadow-lg backdrop-blur-sm max-w-2xl mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-100 via-transparent to-gray-200 rounded-xl opacity-50"></div>
+        <p class="relative text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
+          Get all your mail and messages in one flow. Boost your productivity with <span class="font-semibold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Mailflow</span>, convenient all-in-one inbox for all your communication channels.
+        </p>
+      </div>
+      
+      <!-- CTA Button with Gradient -->
+      <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="signup.html" class="group relative inline-block px-8 py-3 md:px-10 md:py-4 rounded-xl text-white text-base md:text-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 overflow-hidden">
+          <!-- Gradient Background -->
+          <span class="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black group-hover:from-gray-900 group-hover:via-black group-hover:to-gray-900 transition-all duration-300"></span>
+          <!-- Shine Effect -->
+          <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+          <span class="relative z-10">Sign Up for free</span>
+        </a>
+        
+        <a href="#" class="group px-8 py-3 md:px-10 md:py-4 rounded-xl text-gray-800 text-base md:text-lg font-semibold border-2 border-gray-300 hover:border-gray-600 bg-gradient-to-br from-white to-gray-50 hover:from-gray-50 hover:to-gray-100 transition-all duration-300 shadow-md hover:shadow-lg">
+          Learn More
+        </a>
+      </div>
+
+      
+    </div>
+  </div>
     
   </section>
 
-    <!-- <nav class="backdrop-blur-md bg-black/30 border-b border-white/10 flex md:justify-between">
-      <div class="text-xl font-bold tracking-wider">
-        Mailflow
-      </div>
-      <div>
-      <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-
-      <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-        <ul class="flex flex-col font-medium mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0  ">
-        <li>HOME</li>
-        <li>PLANS</li>
-        <li>FAQ</li>
-        <li>CONTACTS</li>
-        </ul>
-      </div>
-      </div>
-    </nav> -->
+    
 
 
   
